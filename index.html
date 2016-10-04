@@ -12,14 +12,14 @@
     <div id="third" onclick="third()" class="field"></div>
     <div style="clear:both;"></div>
 
-    <div id="fourth" class="field"></div>
-    <div id="fifth" class="field"></div>
-    <div id="sixth" class="field"></div>
+    <div id="fourth" onclick="fourth()" class="field"></div>
+    <div id="fifth" onclick="fifth()" class="field"></div>
+    <div id="sixth" onclick="sixth()" class="field"></div>
     <div style="clear:both;"></div>
 
-    <div class="field"></div>
-    <div class="field"></div>
-    <div class="field"></div>
+    <div id="seventh" onclick="seventh()" class="field"></div>
+    <div id="eight" onclick="eight()" class="field"></div>
+    <div id="ninth" onclick="ninth()" class="field"></div>
     <div style="clear:both;"></div>
     <button onClick="console.log('zaczyna kolko')">Start</button>
 </div>
@@ -28,13 +28,123 @@
     var isFieldFull = [false, false, false, false, false, false, false, false, false];
     var playersMoves = [false, false, false, false, false, false, false, false, false];
 
+    var crossIcon = document.createElement("img");
+    crossIcon.src = "cross.png";
+
+    var isMoveSet = false;
+    var isNumberSet = false;
+
+    function setComputersMove(number, fieldIndex) {
+        var crossIcon = document.createElement("img");
+        crossIcon.src = "cross.png";
+        var index = document.getElementById(fieldIndex);
+        index.appendChild(crossIcon);
+        isFieldFull[number] = true;
+        isMoveSet = true;
+    }
     function computerMove() {
-        if ((playersMoves [0] == true) && (playersMoves [1] == true)) {
-            var index = document.getElementById("third");
-            var crossIcon = document.createElement("img");
-            crossIcon.src = "cross.png";
-            index.appendChild(crossIcon);
-            isFieldFull[2] = false;
+        /*        if ((playersMoves [0] == true) && (playersMoves [1] == true)) {
+         var index = document.getElementById("third");
+         index.appendChild(crossIcon);
+         isFieldFull[2] = true;
+         }*/
+        while (true) {
+            var number = Math.floor(Math.random() * 9);
+            console.log(number);
+            if (isFieldFull[number]) {
+                console.log("wylosuje liczbe jeszcze raz");
+                number = Math.floor(Math.random() * 9);
+                console.log(number);
+            }
+            else {
+                switch (number) {
+                    case 0:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "first");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 1:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "second");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 2:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "third");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 3:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "fourth");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 4:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "fifth");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 5:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "sixth");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 6:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "seventh");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 7:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "eight");
+                            isNumberSet = true;
+                            break;
+                        }
+                    case 8:
+                        if (isFieldFull[number]) {
+                            break;
+                        }
+                        else {
+                            setComputersMove(number, "ninth");
+                            isNumberSet = true;
+                            break;
+                        }
+                }
+            }
+            console.log("wyszedlem ze switcha");
+            if (isMoveSet) {
+                break;
+            }
         }
     }
 
@@ -82,6 +192,97 @@
             console.log("Postawiles juz tutaj");
         }
     }
+
+    function fourth() {
+        if (isFieldFull[3] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("fourth");
+            src.appendChild(circleIcon);
+            isFieldFull[3] = true;
+            playersMoves[3] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function fifth() {
+        if (isFieldFull[4] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("fifth");
+            src.appendChild(circleIcon);
+            isFieldFull[4] = true;
+            playersMoves[4] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function sixth() {
+        if (isFieldFull[5] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("sixth");
+            src.appendChild(circleIcon);
+            isFieldFull[5] = true;
+            playersMoves[5] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function seventh() {
+        if (isFieldFull[6] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("seventh");
+            src.appendChild(circleIcon);
+            isFieldFull[6] = true;
+            playersMoves[6] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function eight() {
+        if (isFieldFull[7] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("eight");
+            src.appendChild(circleIcon);
+            isFieldFull[7] = true;
+            playersMoves[7] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function ninth() {
+        if (isFieldFull[8] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("ninth");
+            src.appendChild(circleIcon);
+            isFieldFull[8] = true;
+            playersMoves[8] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
 
 </script>
 </body>
