@@ -7,14 +7,14 @@
 </head>
 <body>
 <div class="container">
-    <div id="first" class="field" onclick="playersMove()"></div>
-    <div class="field"></div>
-    <div class="field"></div>
+    <div id="first" class="field" onclick="first()"></div>
+    <div id="second" class="field"></div>
+    <div id="third" class="field"></div>
     <div style="clear:both;"></div>
 
-    <div class="field"></div>
-    <div class="field"></div>
-    <div class="field"></div>
+    <div id="fourth" class="field"></div>
+    <div id="fifth" class="field"></div>
+    <div id="sixth" class="field"></div>
     <div style="clear:both;"></div>
 
     <div class="field"></div>
@@ -26,22 +26,34 @@
 
 <script>
     var isFieldEmpty = [false, false, false, false, false, false, false, false, false];
-    var circleIcon = document.createElement("circleIcon");
+    var playersMoves = [false, false, false, false, false, false, false, false, false];
+
+    var circleIcon = document.createElement("img");
     circleIcon.src = "circle.png";
+    var crossIcon = document.createElement("img");
+    crossIcon.src = "circle.png";
 
 
-
-
-    function playersMove() {
-        if(first == false) {
-            var src = document.getElementById("first");
-            src.appendChild(img);
-            first = true;
-        }
-        else {
-            alert("JUz postawony tu");
+    function checkIfCircleMayWin() {
+        if((playersMoves [0] == true) || (playersMoves [1] == true)) {
+            var index = document.getElementById("third");
+            index.appendChild(crossIcon);
         }
     }
+
+    function first() {
+        if(isFieldEmpty[0] == false) {
+            var src = document.getElementById("first");
+            src.appendChild(circleIcon);
+            isFieldEmpty[0] = true;
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+
+        checkIfCircleMayWin();
+    }
+
 
 </script>
 </body>
