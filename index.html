@@ -7,6 +7,11 @@
 </head>
 <body>
 <div class="container">
+    <div id="first" class="field" onclick="playersMove()"></div>
+    <div class="field"></div>
+    <div class="field"></div>
+    <div style="clear:both;"></div>
+
     <div class="field"></div>
     <div class="field"></div>
     <div class="field"></div>
@@ -16,12 +21,28 @@
     <div class="field"></div>
     <div class="field"></div>
     <div style="clear:both;"></div>
-
-    <div class="field"></div>
-    <div class="field"></div>
-    <div class="field"></div>
-    <div style="clear:both;"></div>
+    <button onClick="console.log('zaczyna kolko')">Start</button>
 </div>
 
+<script>
+    var isFieldEmpty = [false, false, false, false, false, false, false, false, false];
+    var circleIcon = document.createElement("circleIcon");
+    circleIcon.src = "circle.png";
+
+
+
+
+    function playersMove() {
+        if(first == false) {
+            var src = document.getElementById("first");
+            src.appendChild(img);
+            first = true;
+        }
+        else {
+            alert("JUz postawony tu");
+        }
+    }
+
+</script>
 </body>
 </html>
