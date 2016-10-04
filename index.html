@@ -8,8 +8,8 @@
 <body>
 <div class="container">
     <div id="first" class="field" onclick="first()"></div>
-    <div id="second" class="field"></div>
-    <div id="third" class="field"></div>
+    <div id="second" onclick="second()" class="field"></div>
+    <div id="third" onclick="third()" class="field"></div>
     <div style="clear:both;"></div>
 
     <div id="fourth" class="field"></div>
@@ -28,30 +28,64 @@
     var isFieldEmpty = [false, false, false, false, false, false, false, false, false];
     var playersMoves = [false, false, false, false, false, false, false, false, false];
 
-    var circleIcon = document.createElement("img");
-    circleIcon.src = "circle.png";
-    var crossIcon = document.createElement("img");
-    crossIcon.src = "circle.png";
-
-
-    function checkIfCircleMayWin() {
-        if((playersMoves [0] == true) || (playersMoves [1] == true)) {
-            var index = document.getElementById("third");
-            index.appendChild(crossIcon);
-        }
-    }
 
     function first() {
-        if(isFieldEmpty[0] == false) {
+        if (isFieldEmpty[0] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
             var src = document.getElementById("first");
             src.appendChild(circleIcon);
             isFieldEmpty[0] = true;
+            playersMoves[0] = true;
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+        computerMove();
+    }
+
+    function second() {
+        if (isFieldEmpty[1] == false) {
+            var src = document.getElementById("second");
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            src.appendChild(circleIcon);
+            isFieldEmpty[1] = true;
+            playersMoves[1] = true;
+
         }
         else {
             console.log("Postawiles juz tutaj");
         }
 
-        checkIfCircleMayWin();
+        computerMove();
+    }
+
+    function third() {
+        if (isFieldEmpty[2] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("third");
+            src.appendChild(circleIcon);
+            isFieldEmpty[2] = true;
+            playersMoves[2] = true;
+
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+
+
+        computerMove();
+    }
+
+    function computerMove() {
+        if ((playersMoves [0] == true) && (playersMoves [1] == true)) {
+            var index = document.getElementById("third");
+            var crossIcon = document.createElement("img");
+            crossIcon.src = "cross.png";
+            index.appendChild(crossIcon);
+        }
     }
 
 
