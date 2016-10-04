@@ -25,59 +25,8 @@
 </div>
 
 <script>
-    var isFieldEmpty = [false, false, false, false, false, false, false, false, false];
+    var isFieldFull = [false, false, false, false, false, false, false, false, false];
     var playersMoves = [false, false, false, false, false, false, false, false, false];
-
-
-    function first() {
-        if (isFieldEmpty[0] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("first");
-            src.appendChild(circleIcon);
-            isFieldEmpty[0] = true;
-            playersMoves[0] = true;
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
-        computerMove();
-    }
-
-    function second() {
-        if (isFieldEmpty[1] == false) {
-            var src = document.getElementById("second");
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            src.appendChild(circleIcon);
-            isFieldEmpty[1] = true;
-            playersMoves[1] = true;
-
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
-
-        computerMove();
-    }
-
-    function third() {
-        if (isFieldEmpty[2] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("third");
-            src.appendChild(circleIcon);
-            isFieldEmpty[2] = true;
-            playersMoves[2] = true;
-
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
-
-
-        computerMove();
-    }
 
     function computerMove() {
         if ((playersMoves [0] == true) && (playersMoves [1] == true)) {
@@ -85,9 +34,54 @@
             var crossIcon = document.createElement("img");
             crossIcon.src = "cross.png";
             index.appendChild(crossIcon);
+            isFieldFull[2] = false;
         }
     }
 
+    function first() {
+        if (isFieldFull[0] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("first");
+            src.appendChild(circleIcon);
+            isFieldFull[0] = true;
+            playersMoves[0] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function second() {
+        if (isFieldFull[1] == false) {
+            var src = document.getElementById("second");
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            src.appendChild(circleIcon);
+            isFieldFull[1] = true;
+            playersMoves[1] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
+
+    function third() {
+        if (isFieldFull[2] == false) {
+            var circleIcon = document.createElement("img");
+            circleIcon.src = "circle.png";
+            var src = document.getElementById("third");
+            src.appendChild(circleIcon);
+            isFieldFull[2] = true;
+            playersMoves[2] = true;
+            computerMove();
+        }
+        else {
+            console.log("Postawiles juz tutaj");
+        }
+    }
 
 </script>
 </body>
