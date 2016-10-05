@@ -27,7 +27,9 @@
 <script>
     var isFieldFull = [false, false, false, false, false, false, false, false, false];
     var playersMoves = [false, false, false, false, false, false, false, false, false];
+    var computerMoves = [false, false, false, false, false, false, false, false, false];
 
+    var numberOfMoves = 0;
     var isGameOver = false;
 
     var crossIcon = document.createElement("img");
@@ -42,12 +44,41 @@
                 (playersMoves[0] && playersMoves[3] && playersMoves[6]) ||
                 (playersMoves[1] && playersMoves[4] && playersMoves[7]) ||
                 (playersMoves[2] && playersMoves[5] && playersMoves[8]) ||
-                (playersMoves[0] && playersMoves[4] && playersMoves[8])) {
+                (playersMoves[0] && playersMoves[4] && playersMoves[8]) ||
+                (playersMoves[2] && playersMoves[4] && playersMoves[6])) {
             console.log("Gracz wygrywa!");
             isGameOver = true;
             for (var n in isFieldFull) {
                 isFieldFull[n] = true;
             }
+        }
+        else if (numberOfMoves >= 9) {
+            for (var h in isFieldFull) {
+                isFieldFull[h] = true;
+            }
+            console.log("Remis");
+        }
+    }
+    function checkIfComputerWins() {
+        if ((computerMoves[0] && computerMoves[1] && computerMoves[2]) ||
+                (computerMoves[3] && computerMoves[4] && computerMoves[5]) ||
+                (computerMoves[6] && computerMoves[7] && computerMoves[8]) ||
+                (computerMoves[0] && computerMoves[3] && computerMoves[6]) ||
+                (computerMoves[1] && computerMoves[4] && computerMoves[7]) ||
+                (computerMoves[2] && computerMoves[5] && computerMoves[8]) ||
+                (computerMoves[0] && computerMoves[4] && computerMoves[8]) ||
+                (computerMoves[2] && computerMoves[4] && computerMoves[6])) {
+            console.log("komputer wygrywa!");
+            isGameOver = true;
+            for (var n in isFieldFull) {
+                isFieldFull[n] = true;
+            }
+        }
+        else if (numberOfMoves >= 9) {
+            for (var h in isFieldFull) {
+                isFieldFull[h] = true;
+            }
+            console.log("Remis");
         }
     }
 
@@ -57,7 +88,7 @@
         var index = document.getElementById(fieldIndex);
         index.appendChild(crossIcon);
         isFieldFull[number] = true;
-        numberOfMoves++;
+        computerMoves[number] = true;
     }
 
     function computerMove() { //TODO losowac z kolekcji pustych pol, a nie ze wszystkich
@@ -67,6 +98,8 @@
                 console.log(number);
                 if (!isFieldFull[number]) {
                     setComputersMove(number, pluralForms[number]);
+                    numberOfMoves++;
+                    checkIfComputerWins();
                     break;
                 }
             }
@@ -85,6 +118,7 @@
             src.appendChild(circleIcon);
             isFieldFull[0] = true;
             playersMoves[0] = true;
+            numberOfMoves++;
             checkIfPlayerWins();
             computerMove();
         }
@@ -101,6 +135,7 @@
             src.appendChild(circleIcon);
             isFieldFull[1] = true;
             playersMoves[1] = true;
+            numberOfMoves++;
             checkIfPlayerWins();
             computerMove();
         }
@@ -117,6 +152,7 @@
             src.appendChild(circleIcon);
             isFieldFull[2] = true;
             playersMoves[2] = true;
+            numberOfMoves++;
             checkIfPlayerWins();
             computerMove();
         }
@@ -133,6 +169,7 @@
             src.appendChild(circleIcon);
             isFieldFull[3] = true;
             playersMoves[3] = true;
+            numberOfMoves++;
             checkIfPlayerWins();
             computerMove();
         }
@@ -150,6 +187,7 @@
             isFieldFull[4] = true;
             playersMoves[4] = true;
             checkIfPlayerWins();
+            numberOfMoves++;
             computerMove();
         }
         else {
@@ -166,6 +204,7 @@
             isFieldFull[5] = true;
             playersMoves[5] = true;
             checkIfPlayerWins();
+            numberOfMoves++;
             computerMove();
         }
         else {
@@ -182,6 +221,7 @@
             isFieldFull[6] = true;
             playersMoves[6] = true;
             checkIfPlayerWins();
+            numberOfMoves++;
             computerMove();
         }
         else {
@@ -198,6 +238,7 @@
             isFieldFull[7] = true;
             playersMoves[7] = true;
             checkIfPlayerWins();
+            numberOfMoves++;
             computerMove();
         }
         else {
@@ -214,6 +255,7 @@
             isFieldFull[8] = true;
             playersMoves[8] = true;
             checkIfPlayerWins();
+            numberOfMoves++;
             computerMove();
         }
         else {
