@@ -21,7 +21,6 @@
     <div id="eighth" onclick="eight()" class="field"></div>
     <div id="ninth" onclick="ninth()" class="field"></div>
     <div style="clear:both;"></div>
-    <button onClick="console.log('zaczyna kolko')">Start</button>
 </div>
 
 <script>
@@ -110,6 +109,8 @@
         }
     }
 
+
+
     function first() {
         if (isFieldFull[0] == false) {
             var circleIcon = document.createElement("img");
@@ -186,8 +187,8 @@
             src.appendChild(circleIcon);
             isFieldFull[4] = true;
             playersMoves[4] = true;
-            checkIfPlayerWins();
             numberOfMoves++;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -203,8 +204,8 @@
             src.appendChild(circleIcon);
             isFieldFull[5] = true;
             playersMoves[5] = true;
-            checkIfPlayerWins();
             numberOfMoves++;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -220,8 +221,8 @@
             src.appendChild(circleIcon);
             isFieldFull[6] = true;
             playersMoves[6] = true;
-            checkIfPlayerWins();
             numberOfMoves++;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -237,8 +238,8 @@
             src.appendChild(circleIcon);
             isFieldFull[7] = true;
             playersMoves[7] = true;
-            checkIfPlayerWins();
             numberOfMoves++;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -254,8 +255,8 @@
             src.appendChild(circleIcon);
             isFieldFull[8] = true;
             playersMoves[8] = true;
-            checkIfPlayerWins();
             numberOfMoves++;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
