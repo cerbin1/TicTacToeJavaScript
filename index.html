@@ -18,7 +18,7 @@
     <div style="clear:both;"></div>
 
     <div id="seventh" onclick="seventh()" class="field"></div>
-    <div id="eighth" onclick="eight()" class="field"></div>
+    <div id="eighth" onclick="eighth()" class="field"></div>
     <div id="ninth" onclick="ninth()" class="field"></div>
     <div style="clear:both;"></div>
 </div>
@@ -110,15 +110,14 @@
     }
 
 
-
-    function first() {
-        if (isFieldFull[0] == false) {
+    function setPlayersMove(number, indexOfField) {
+        if (isFieldFull[number] == false) {
             var circleIcon = document.createElement("img");
             circleIcon.src = "circle.png";
-            var src = document.getElementById("first");
+            var src = document.getElementById(indexOfField);
             src.appendChild(circleIcon);
-            isFieldFull[0] = true;
-            playersMoves[0] = true;
+            isFieldFull[number] = true;
+            playersMoves[number] = true;
             numberOfMoves++;
             checkIfPlayerWins();
             computerMove();
@@ -126,144 +125,43 @@
         else {
             console.log("Postawiles juz tutaj");
         }
+
+    }
+    function first() {
+        setPlayersMove(0, "first");
     }
 
     function second() {
-        if (isFieldFull[1] == false) {
-            var src = document.getElementById("second");
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            src.appendChild(circleIcon);
-            isFieldFull[1] = true;
-            playersMoves[1] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(1, "second");
     }
 
     function third() {
-        if (isFieldFull[2] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("third");
-            src.appendChild(circleIcon);
-            isFieldFull[2] = true;
-            playersMoves[2] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(2, "third");
     }
 
     function fourth() {
-        if (isFieldFull[3] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("fourth");
-            src.appendChild(circleIcon);
-            isFieldFull[3] = true;
-            playersMoves[3] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(3, "fourth");
     }
 
     function fifth() {
-        if (isFieldFull[4] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("fifth");
-            src.appendChild(circleIcon);
-            isFieldFull[4] = true;
-            playersMoves[4] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(4, "fifth");
     }
 
     function sixth() {
-        if (isFieldFull[5] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("sixth");
-            src.appendChild(circleIcon);
-            isFieldFull[5] = true;
-            playersMoves[5] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(5, "sixth");
     }
 
     function seventh() {
-        if (isFieldFull[6] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("seventh");
-            src.appendChild(circleIcon);
-            isFieldFull[6] = true;
-            playersMoves[6] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(6, "seventh");
     }
 
-    function eight() {
-        if (isFieldFull[7] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("eighth");
-            src.appendChild(circleIcon);
-            isFieldFull[7] = true;
-            playersMoves[7] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+    function eighth() {
+        setPlayersMove(7, "eighth");
     }
 
     function ninth() {
-        if (isFieldFull[8] == false) {
-            var circleIcon = document.createElement("img");
-            circleIcon.src = "circle.png";
-            var src = document.getElementById("ninth");
-            src.appendChild(circleIcon);
-            isFieldFull[8] = true;
-            playersMoves[8] = true;
-            numberOfMoves++;
-            checkIfPlayerWins();
-            computerMove();
-        }
-        else {
-            console.log("Postawiles juz tutaj");
-        }
+        setPlayersMove(8, "ninth");
     }
-
 
 </script>
 </body>
