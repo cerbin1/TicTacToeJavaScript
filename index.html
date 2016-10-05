@@ -84,7 +84,9 @@
     }
 
     function setPlayersMove(number, indexOfField) {
-        document.getElementById("communicatesToPlayer").innerHTML = "";
+        if (!isGameOver) {
+            document.getElementById("communicatesToPlayer").innerHTML = "";
+        }
         if (isFieldFull[number] == false) {
             var circleIcon = document.createElement("img");
             circleIcon.src = "circle.png";
