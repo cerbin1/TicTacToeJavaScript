@@ -28,18 +28,25 @@
     var isFieldFull = [false, false, false, false, false, false, false, false, false];
     var playersMoves = [false, false, false, false, false, false, false, false, false];
 
+    var isGameOver = false;
+
     var crossIcon = document.createElement("img");
     crossIcon.src = "cross.png";
 
     var pluralForms = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth"];
 
     function checkIfPlayerWins() {
-        if(playersMoves[0] && playersMoves[1] && playersMoves[2]) {
+        if ((playersMoves[0] && playersMoves[1] && playersMoves[2]) ||
+                (playersMoves[3] && playersMoves[4] && playersMoves[5]) ||
+                (playersMoves[6] && playersMoves[7] && playersMoves[8]) ||
+                (playersMoves[0] && playersMoves[3] && playersMoves[6]) ||
+                (playersMoves[1] && playersMoves[4] && playersMoves[7]) ||
+                (playersMoves[2] && playersMoves[5] && playersMoves[8]) ||
+                (playersMoves[0] && playersMoves[4] && playersMoves[8])) {
             console.log("Gracz wygrywa!");
+            isGameOver = true;
             for (var n in isFieldFull) {
                 isFieldFull[n] = true;
-            }for (var i in isFieldFull) {
-                isFieldFull[i] = true;
             }
         }
     }
@@ -50,13 +57,21 @@
         var index = document.getElementById(fieldIndex);
         index.appendChild(crossIcon);
         isFieldFull[number] = true;
+        numberOfMoves++;
     }
+
     function computerMove() { //TODO losowac z kolekcji pustych pol, a nie ze wszystkich
         while (true) {
-            var number = Math.floor(Math.random() * 9);
-            console.log(number);
-            if (!isFieldFull[number]) {
-                setComputersMove(number, pluralForms[number]);
+            if (!isGameOver) {
+                var number = Math.floor(Math.random() * 9);
+                console.log(number);
+                if (!isFieldFull[number]) {
+                    setComputersMove(number, pluralForms[number]);
+                    break;
+                }
+            }
+            else {
+                console.log("Nie da sie juz postawic ruchu komputerze!");
                 break;
             }
         }
@@ -134,6 +149,7 @@
             src.appendChild(circleIcon);
             isFieldFull[4] = true;
             playersMoves[4] = true;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -149,6 +165,7 @@
             src.appendChild(circleIcon);
             isFieldFull[5] = true;
             playersMoves[5] = true;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -164,6 +181,7 @@
             src.appendChild(circleIcon);
             isFieldFull[6] = true;
             playersMoves[6] = true;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -179,6 +197,7 @@
             src.appendChild(circleIcon);
             isFieldFull[7] = true;
             playersMoves[7] = true;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
@@ -194,6 +213,7 @@
             src.appendChild(circleIcon);
             isFieldFull[8] = true;
             playersMoves[8] = true;
+            checkIfPlayerWins();
             computerMove();
         }
         else {
