@@ -33,12 +33,9 @@
     var numberOfMoves = 0;
     var isGameOver = false;
 
-    var crossIcon = document.createElement("img");
-    crossIcon.src = "cross.png";
-
     var pluralForms = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth"];
 
-    function checkIfSomeoneWins(array, string) {
+    function checkIfSomeoneWins(array, whoWins) {
         if ((array[0] && array[1] && array[2]) ||
                 (array[3] && array[4] && array[5]) ||
                 (array[6] && array[7] && array[8]) ||
@@ -47,17 +44,14 @@
                 (array[2] && array[5] && array[8]) ||
                 (array[0] && array[4] && array[8]) ||
                 (array[2] && array[4] && array[6])) {
-            document.getElementById("communicatesToPlayer").innerHTML = string + " wygrał!";
+            document.getElementById("communicatesToPlayer").innerHTML = whoWins + " wygrał!";
             isGameOver = true;
             for (var n in isFieldFull) {
                 isFieldFull[n] = true;
             }
         }
         else if (numberOfMoves == 9) {
-            for (var h in isFieldFull) {
-                isFieldFull[h] = true;
-                isGameOver = true;
-            }
+            isGameOver = true;
             document.getElementById("communicatesToPlayer").innerHTML = "Remis!";
         }
     }
@@ -90,6 +84,7 @@
     }
 
     function setPlayersMove(number, indexOfField) {
+        document.getElementById("communicatesToPlayer").innerHTML = "";
         if (isFieldFull[number] == false) {
             var circleIcon = document.createElement("img");
             circleIcon.src = "circle.png";
@@ -102,7 +97,9 @@
             computerMove();
         }
         else {
-            document.getElementById("communicatesToPlayer").innerHTML = "Nie możesz postawić tu znaku.";
+            if (!isGameOver) {
+                document.getElementById("communicatesToPlayer").innerHTML = "Nie możesz postawić tu znaku.";
+            }
         }
     }
     function first() {
