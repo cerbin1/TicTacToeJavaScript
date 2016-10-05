@@ -21,6 +21,8 @@
     <div id="eighth" onclick="eighth()" class="field"></div>
     <div id="ninth" onclick="ninth()" class="field"></div>
     <div style="clear:both;"></div>
+
+    <p class="content" id="communicatesToPlayer">Aby zacząć kliknij w miejsce, gdzie chcesz umieścić kółko.</p>
 </div>
 
 <script>
@@ -45,7 +47,7 @@
                 (array[2] && array[5] && array[8]) ||
                 (array[0] && array[4] && array[8]) ||
                 (array[2] && array[4] && array[6])) {
-            console.log(string + " wygrywa!");
+            document.getElementById("communicatesToPlayer").innerHTML = string + " wygrał!";
             isGameOver = true;
             for (var n in isFieldFull) {
                 isFieldFull[n] = true;
@@ -56,57 +58,9 @@
                 isFieldFull[h] = true;
                 isGameOver = true;
             }
-            console.log("Remis");
+            document.getElementById("communicatesToPlayer").innerHTML = "Remis!";
         }
     }
-
-/*    function checkIfPlayerWins() {
-        if ((playersMoves[0] && playersMoves[1] && playersMoves[2]) ||
-                (playersMoves[3] && playersMoves[4] && playersMoves[5]) ||
-                (playersMoves[6] && playersMoves[7] && playersMoves[8]) ||
-                (playersMoves[0] && playersMoves[3] && playersMoves[6]) ||
-                (playersMoves[1] && playersMoves[4] && playersMoves[7]) ||
-                (playersMoves[2] && playersMoves[5] && playersMoves[8]) ||
-                (playersMoves[0] && playersMoves[4] && playersMoves[8]) ||
-                (playersMoves[2] && playersMoves[4] && playersMoves[6])) {
-            console.log("Gracz wygrywa!");
-            isGameOver = true;
-            for (var n in isFieldFull) {
-                isFieldFull[n] = true;
-            }
-        }
-        else if (numberOfMoves == 9) {
-            for (var h in isFieldFull) {
-                isFieldFull[h] = true;
-                isGameOver = true;
-            }
-            console.log("Remis");
-        }
-    }*/
-
-/*    function checkIfComputerWins() {
-        if ((computerMoves[0] && computerMoves[1] && computerMoves[2]) ||
-                (computerMoves[3] && computerMoves[4] && computerMoves[5]) ||
-                (computerMoves[6] && computerMoves[7] && computerMoves[8]) ||
-                (computerMoves[0] && computerMoves[3] && computerMoves[6]) ||
-                (computerMoves[1] && computerMoves[4] && computerMoves[7]) ||
-                (computerMoves[2] && computerMoves[5] && computerMoves[8]) ||
-                (computerMoves[0] && computerMoves[4] && computerMoves[8]) ||
-                (computerMoves[2] && computerMoves[4] && computerMoves[6])) {
-            console.log("komputer wygrywa!");
-            isGameOver = true;
-            for (var n in isFieldFull) {
-                isFieldFull[n] = true;
-            }
-        }
-        else if (numberOfMoves == 9) {
-            for (var h in isFieldFull) {
-                isFieldFull[h] = true;
-            }
-            isGameOver = true;
-            console.log("Remis");
-        }
-    }*/
 
     function setComputersMove(number, fieldIndex) {
         var crossIcon = document.createElement("img");
@@ -125,13 +79,11 @@
                 if (!isFieldFull[number]) {
                     setComputersMove(number, pluralForms[number]);
                     numberOfMoves++;
-                    console.log("liczba ruchow komp: " + numberOfMoves);
-                    checkIfSomeoneWins(computerMoves, "komputer");
+                    checkIfSomeoneWins(computerMoves, "Przeciwnik");
                     break;
                 }
             }
             else {
-                console.log("Nie da sie juz postawic ruchu komputerze!");
                 break;
             }
         }
@@ -146,48 +98,47 @@
             isFieldFull[number] = true;
             playersMoves[number] = true;
             numberOfMoves++;
-            console.log("liczba ruchow gracz: " + numberOfMoves);
             checkIfSomeoneWins(playersMoves, "Gracz");
             computerMove();
         }
         else {
-            console.log("Postawiles juz tutaj");
+            document.getElementById("communicatesToPlayer").innerHTML = "Nie możesz postawić tu znaku.";
         }
     }
     function first() {
-        setPlayersMove(0, "first");
+        setPlayersMove(0, pluralForms[0]);
     }
 
     function second() {
-        setPlayersMove(1, "second");
+        setPlayersMove(1, pluralForms[1]);
     }
 
     function third() {
-        setPlayersMove(2, "third");
+        setPlayersMove(2, pluralForms[2]);
     }
 
     function fourth() {
-        setPlayersMove(3, "fourth");
+        setPlayersMove(3, pluralForms[3]);
     }
 
     function fifth() {
-        setPlayersMove(4, "fifth");
+        setPlayersMove(4, pluralForms[4]);
     }
 
     function sixth() {
-        setPlayersMove(5, "sixth");
+        setPlayersMove(5, pluralForms[5]);
     }
 
     function seventh() {
-        setPlayersMove(6, "seventh");
+        setPlayersMove(6, pluralForms[6]);
     }
 
     function eighth() {
-        setPlayersMove(7, "eighth");
+        setPlayersMove(7, pluralForms[7]);
     }
 
     function ninth() {
-        setPlayersMove(8, "ninth");
+        setPlayersMove(8, pluralForms[8]);
     }
 
 </script>

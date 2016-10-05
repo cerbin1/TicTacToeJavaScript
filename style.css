@@ -4,9 +4,9 @@
 }
 
 .container {
-    width: 500px;
+    width: 306px;
     margin: 200px auto;
-    min-height: 600px;
+    min-height: 302px;
     background-color: lightgrey;
 }
 
@@ -17,4 +17,6 @@
     float: left;
 }
 
-div
+.content {
+    font-size: 40px;
+}
