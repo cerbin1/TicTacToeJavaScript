@@ -51,9 +51,10 @@
                 isFieldFull[n] = true;
             }
         }
-        else if (numberOfMoves >= 9) {
+        else if (numberOfMoves == 9) {
             for (var h in isFieldFull) {
                 isFieldFull[h] = true;
+                isGameOver = true;
             }
             console.log("Remis");
         }
@@ -73,10 +74,11 @@
                 isFieldFull[n] = true;
             }
         }
-        else if (numberOfMoves >= 9) {
+        else if (numberOfMoves == 9) {
             for (var h in isFieldFull) {
                 isFieldFull[h] = true;
             }
+            isGameOver = true;
             console.log("Remis");
         }
     }
@@ -98,6 +100,7 @@
                 if (!isFieldFull[number]) {
                     setComputersMove(number, pluralForms[number]);
                     numberOfMoves++;
+                    console.log("liczba ruchow komp: " + numberOfMoves);
                     checkIfComputerWins();
                     break;
                 }
@@ -109,7 +112,6 @@
         }
     }
 
-
     function setPlayersMove(number, indexOfField) {
         if (isFieldFull[number] == false) {
             var circleIcon = document.createElement("img");
@@ -119,13 +121,13 @@
             isFieldFull[number] = true;
             playersMoves[number] = true;
             numberOfMoves++;
+            console.log("liczba ruchow gracz: " + numberOfMoves);
             checkIfPlayerWins();
             computerMove();
         }
         else {
             console.log("Postawiles juz tutaj");
         }
-
     }
     function first() {
         setPlayersMove(0, "first");
