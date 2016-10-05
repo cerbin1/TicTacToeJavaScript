@@ -36,7 +36,31 @@
 
     var pluralForms = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth"];
 
-    function checkIfPlayerWins() {
+    function checkIfSomeoneWins(array, string) {
+        if ((array[0] && array[1] && array[2]) ||
+                (array[3] && array[4] && array[5]) ||
+                (array[6] && array[7] && array[8]) ||
+                (array[0] && array[3] && array[6]) ||
+                (array[1] && array[4] && array[7]) ||
+                (array[2] && array[5] && array[8]) ||
+                (array[0] && array[4] && array[8]) ||
+                (array[2] && array[4] && array[6])) {
+            console.log(string + " wygrywa!");
+            isGameOver = true;
+            for (var n in isFieldFull) {
+                isFieldFull[n] = true;
+            }
+        }
+        else if (numberOfMoves == 9) {
+            for (var h in isFieldFull) {
+                isFieldFull[h] = true;
+                isGameOver = true;
+            }
+            console.log("Remis");
+        }
+    }
+
+/*    function checkIfPlayerWins() {
         if ((playersMoves[0] && playersMoves[1] && playersMoves[2]) ||
                 (playersMoves[3] && playersMoves[4] && playersMoves[5]) ||
                 (playersMoves[6] && playersMoves[7] && playersMoves[8]) ||
@@ -58,8 +82,9 @@
             }
             console.log("Remis");
         }
-    }
-    function checkIfComputerWins() {
+    }*/
+
+/*    function checkIfComputerWins() {
         if ((computerMoves[0] && computerMoves[1] && computerMoves[2]) ||
                 (computerMoves[3] && computerMoves[4] && computerMoves[5]) ||
                 (computerMoves[6] && computerMoves[7] && computerMoves[8]) ||
@@ -81,7 +106,7 @@
             isGameOver = true;
             console.log("Remis");
         }
-    }
+    }*/
 
     function setComputersMove(number, fieldIndex) {
         var crossIcon = document.createElement("img");
@@ -101,7 +126,7 @@
                     setComputersMove(number, pluralForms[number]);
                     numberOfMoves++;
                     console.log("liczba ruchow komp: " + numberOfMoves);
-                    checkIfComputerWins();
+                    checkIfSomeoneWins(computerMoves, "komputer");
                     break;
                 }
             }
@@ -122,7 +147,7 @@
             playersMoves[number] = true;
             numberOfMoves++;
             console.log("liczba ruchow gracz: " + numberOfMoves);
-            checkIfPlayerWins();
+            checkIfSomeoneWins(playersMoves, "Gracz");
             computerMove();
         }
         else {
