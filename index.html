@@ -52,12 +52,17 @@
         alert("Witaj w grze kółko i krzyżyk :). Aby rozpocząć grę kliknij w miejsce, gdzie chcesz umieścić kółko, czyli twój znak.");
     }
 
+    function setBooleanBoard(booleanBoard) {
+        for (var i = 0; i < booleanBoard.length; i++) {
+            booleanBoard[i] = false;
+        }
+    }
+
     function newGame() {
-//        location.reload();
         document.getElementById("communicatesToPlayer").innerHTML = "";
-        isFieldFull = [false, false, false, false, false, false, false, false, false];
-        playersMoves = [false, false, false, false, false, false, false, false, false];
-        computerMoves = [false, false, false, false, false, false, false, false, false];
+        setBooleanBoard(isFieldFull);
+        setBooleanBoard(playersMoves);
+        setBooleanBoard(computerMoves);
         numberOfMoves = 0;
         isGameOver = false;
         document.getElementById("newGameButton").style.display = "none";
