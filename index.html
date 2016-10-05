@@ -5,7 +5,7 @@
     <title>TicTacToe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body onload="displayStartMessage()">
 <div class="container">
     <div id="first" class="field" onclick="first()"></div>
     <div id="second" onclick="second()" class="field"></div>
@@ -22,7 +22,8 @@
     <div id="ninth" onclick="ninth()" class="field"></div>
     <div style="clear:both;"></div>
 
-    <p class="content" id="communicatesToPlayer">Aby zacząć kliknij w miejsce, gdzie chcesz umieścić kółko.</p>
+    <p class="content" id="communicatesToPlayer"></p>
+    <div id="newGameButton" onclick="newGame()">Nowa gra</div>
 </div>
 
 <script>
@@ -35,6 +36,18 @@
 
     var pluralForms = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth"];
 
+    function displayStartMessage() {
+        alert("Aby zacząć kliknij w miejsce, gdzie chcesz umieścić kółko.");
+    }
+
+    function newGame() {
+        location.reload();
+    }
+
+    function displayNewGameButton() {
+        document.getElementById("newGameButton").style.display = "block";
+    }
+
     function checkIfSomeoneWins(array, whoWins) {
         if ((array[0] && array[1] && array[2]) ||
                 (array[3] && array[4] && array[5]) ||
@@ -45,6 +58,7 @@
                 (array[0] && array[4] && array[8]) ||
                 (array[2] && array[4] && array[6])) {
             document.getElementById("communicatesToPlayer").innerHTML = whoWins + " wygrał!";
+            displayNewGameButton();
             isGameOver = true;
             for (var n in isFieldFull) {
                 isFieldFull[n] = true;
@@ -53,6 +67,7 @@
         else if (numberOfMoves == 9) {
             isGameOver = true;
             document.getElementById("communicatesToPlayer").innerHTML = "Remis!";
+            displayNewGameButton();
         }
     }
 
@@ -69,7 +84,6 @@
         while (true) {
             if (!isGameOver) {
                 var number = Math.floor(Math.random() * 9);
-                console.log(number);
                 if (!isFieldFull[number]) {
                     setComputersMove(number, pluralForms[number]);
                     numberOfMoves++;
