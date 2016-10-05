@@ -28,3 +28,7 @@
     border: 1px solid black;
     cursor: pointer;
 }
+#newGameButton:hover {
+    color: deepskyblue;
+    background-color: azure;
+}

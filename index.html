@@ -36,12 +36,32 @@
 
     var pluralForms = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth"];
 
+    function clear() {
+        document.getElementById(pluralForms[0]).innerHTML = "";
+        document.getElementById(pluralForms[1]).innerHTML = "";
+        document.getElementById(pluralForms[2]).innerHTML = "";
+        document.getElementById(pluralForms[3]).innerHTML = "";
+        document.getElementById(pluralForms[4]).innerHTML = "";
+        document.getElementById(pluralForms[5]).innerHTML = "";
+        document.getElementById(pluralForms[6]).innerHTML = "";
+        document.getElementById(pluralForms[7]).innerHTML = "";
+        document.getElementById(pluralForms[8]).innerHTML = "";
+    }
+
     function displayStartMessage() {
-        alert("Aby zacząć kliknij w miejsce, gdzie chcesz umieścić kółko.");
+        alert("Witaj w grze kółko i krzyżyk :). Aby rozpocząć grę kliknij w miejsce, gdzie chcesz umieścić kółko, czyli twój znak.");
     }
 
     function newGame() {
-        location.reload();
+//        location.reload();
+        document.getElementById("communicatesToPlayer").innerHTML = "";
+        isFieldFull = [false, false, false, false, false, false, false, false, false];
+        playersMoves = [false, false, false, false, false, false, false, false, false];
+        computerMoves = [false, false, false, false, false, false, false, false, false];
+        numberOfMoves = 0;
+        isGameOver = false;
+        document.getElementById("newGameButton").style.display = "none";
+        clear();
     }
 
     function displayNewGameButton() {
@@ -114,7 +134,7 @@
         }
         else {
             if (!isGameOver) {
-                document.getElementById("communicatesToPlayer").innerHTML = "Nie możesz postawić tu znaku.";
+                document.getElementById("communicatesToPlayer").innerHTML = "Nie możesz tu postawić znaku.";
             }
         }
     }
